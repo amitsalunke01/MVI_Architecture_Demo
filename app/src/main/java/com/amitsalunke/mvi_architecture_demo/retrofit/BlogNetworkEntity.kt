@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 //This model is exclusive to retrofit
 //once we get data from retrofit it needs to be converted to project level model i.e Blog
+
 data class BlogNetworkEntity(
     @SerializedName("pk")
     @Expose
