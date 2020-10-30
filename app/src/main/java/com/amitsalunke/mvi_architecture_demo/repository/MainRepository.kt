@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import kotlin.Exception
 
-class MainRepository constructor(
+class MainRepository @Inject constructor(
     private val blogDao: BlogDao,
     private val blogRetrofit: BlogRetrofit,
     private val networkMapper: NetworkMapper,

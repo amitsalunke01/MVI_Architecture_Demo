@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun subscribeObservers() {
+        //when using mvvm
+        //viewModel.getBlogs().observe(this, Observer { dataState ->
+
+        //when mvi
         viewModel.dataState.observe(this, Observer { dataState ->
             when (dataState) {
                 is DataState.Success<List<Blog>> -> {
@@ -46,7 +50,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun displayError(msg: String?) {
-
         if (msg != null) {
             text.text = msg
         } else {
@@ -63,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         for (blog in blogs) {
             sb.append(blog.title + "\n")
         }
-
         text.text = sb.toString()
     }
 }

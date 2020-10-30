@@ -11,11 +11,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
-@Module
-@InstallIn(ApplicationComponent::class)
+//@Module
+//@InstallIn(ApplicationComponent::class)
 object RepositoryModule {
 
-    @Singleton
+   /* @Singleton
     @Provides
     fun provideMainRepository(
         blogDao: BlogDao,
@@ -25,5 +25,5 @@ object RepositoryModule {
     ): MainRepository {
         return MainRepository(blogDao, blogRetrofit, networkMapper, cacheMapper)
 
-    }
+    }*/
 }
