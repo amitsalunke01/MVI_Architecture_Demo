@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         //when using mvvm
         //viewModel.getBlogs().observe(this, Observer { dataState ->
 
+        //while using only live data
+        //viewModel.getLiveDataBlogs().observe(this, Observer { dataState ->
+
+
         //when mvi
         viewModel.dataState.observe(this, Observer { dataState ->
             when (dataState) {

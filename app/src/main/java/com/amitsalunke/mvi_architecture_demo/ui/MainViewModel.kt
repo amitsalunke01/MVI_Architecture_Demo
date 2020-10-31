@@ -19,6 +19,8 @@ constructor(
 ) : ViewModel() {
     private val _dataState: MutableLiveData<DataState<List<Blog>>> = MutableLiveData()
 
+    //private var _dataState2: LiveData<DataState<List<Blog>>> = MutableLiveData()
+
     //take MainStateEvents and convert that into _dataState events
     //getter function for dataState
     val dataState: LiveData<DataState<List<Blog>>>
@@ -31,7 +33,7 @@ constructor(
         return _dataState
     }
 
-
+    //while using flow
     private fun loadData() {
         viewModelScope.launch {
             mainRepository.getBlog()
@@ -40,9 +42,18 @@ constructor(
         }
     }*/
 
+    //while using live data and not flow
+     /*fun getLiveDataBlogs(): LiveData<DataState<List<Blog>>> {
+        viewModelScope.launch {
+            _dataState2 = mainRepository.getBlog2()
+        }
+
+        return _dataState2
+    }*/
+
 
     fun setStateEvent(mainStateEvent: MainStateEvent) {
-        viewModelScope.launch {
+        viewModelScope.launch(IO) {
             when (mainStateEvent) {
                 is MainStateEvent.GetBlogEvents -> {
                     mainRepository.getBlog()
