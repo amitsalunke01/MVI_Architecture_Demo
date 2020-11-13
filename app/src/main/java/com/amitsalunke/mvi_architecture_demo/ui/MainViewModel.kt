@@ -19,6 +19,13 @@ constructor(
 ) : ViewModel() {
     private val _dataState: MutableLiveData<DataState<List<Blog>>> = MutableLiveData()
 
+    //when there is process death following savedStateHandle will handle the situation
+    // val items : LiveData<ArrayList<String>> = savedStateHandle.getLiveData(KEY, arrayListOf())
+    //to save them savedStateHandle.set(KEY, items.value)
+    //in main act or frag  viewModel = ViewModelProviders.of(this, SavedStateViewModelFactory(this)).get(
+    //        ShoppingListViewModel::class.java)
+
+    //while using only LiveData
     //private var _dataState2: LiveData<DataState<List<Blog>>> = MutableLiveData()
 
     //take MainStateEvents and convert that into _dataState events
@@ -57,7 +64,7 @@ constructor(
             when (mainStateEvent) {
                 is MainStateEvent.GetBlogEvents -> {
                     mainRepository.getBlog()
-                        .onEach { dataState -> _dataState.value = dataState }
+                        .onEach { dataState -> _dataState.value = dataState } //.value is nothing but setValue
                         .launchIn(viewModelScope)
                 }
 
